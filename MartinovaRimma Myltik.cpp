@@ -1,9 +1,7 @@
 //{===========================================================================
-//! @file       MartinovaRimma_Myltik.cpp
+//! @file       MartinovaRimma Myltik.cpp
 //!
-//! @brief      Мультфильм "Summer rain".
-//!
-//!             Пример создания мультфильма с помощью TXLib.
+//! @brief      Cartoon "Summer rain".
 //!
 //! @Date       April 2021
 //!
