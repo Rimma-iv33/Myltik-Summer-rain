@@ -1,7 +1,7 @@
 //{===========================================================================
 //! @file       MartinovaRimma Myltik.cpp
 //!
-//! @brief      Cartoon "Summer rain".
+//! @brief      Myltik "Summer rain".
 //!
 //! @Date       April 2021
 //!
@@ -22,7 +22,7 @@ void DrawHouse(int x, int y, double sizeX, double sizeY,COLORREF krishaColor,COL
 void DrawCar(int x, int y, double sizeX, double sizeY, double size, COLORREF nizColor,
              COLORREF verxColor, int kolecoL, int kolecoR);
 void DrawElka(int x, int y, int veterL, int veterR);
-void DrawPesochnicaGribok(int x, int y);
+void DrawPesochnicaGribok(int x, int y, double size);
 void DrawGirl(int x, int y, double sizeX, double sizeY, double size, COLORREF teloColor, int legs, int EyesL, int EyesR);
 void DrawBoy (int x, int y, int size, COLORREF maikaColor, int EyesL, int EyesR, int legs);
 void DrawRains(int x, int y, int Miganie);
@@ -60,8 +60,8 @@ void DrawBackground()
     DrawSky(RGB (0, 255, 255));
     DrawGround(RGB (0, 255, 0));
     DrawRoad();
-    DrawPesochnicaGribok( 525, 120);
-    DrawPesochnicaGribok(1085, 120);
+    DrawPesochnicaGribok( 525, 120, 0.5);
+    DrawPesochnicaGribok(1085, 120, 0.5);
     DrawHouse( 120, 180, 1, 1.5, RGB ( 129, 81,  54), RGB ( 63,  72, 204), RGB (216, 220,  44), TX_ORANGE, 50);
     DrawHouse(1370, 180, 2, 1,   RGB (237,  92, 204), RGB (216, 220,  44), RGB ( 47, 225,  32), TX_ORANGE, 50);
     }
@@ -135,10 +135,17 @@ void DrawMorning()
         DrawHouse( 120, 180, 1, 1.5, RGB ( 129, 81,  54), RGB ( 63,  72, 204), RGB (216, 220,  44), TX_ORANGE, 1 + t*0.09);
         DrawHouse(1370, 180, 2, 1,   RGB (237,  92, 204), RGB (216, 220,  44), RGB ( 47, 225,  32), TX_ORANGE, 1 + t*0.1);
 
-        DrawCar( 120 + 2*t, 650, 1.2, 0.5, 1.3, TX_PINK,             TX_ORANGE,         -5,  60);
-        DrawCar( 520 + 2*t, 670, 1 + (t/6)%2,   1,   1,   RGB (255,   0,   0), RGB (255 ,255, 0), -5,  60);
-        DrawCar(1300 - 2*t, 760, 1,   1.5, 1.5, TX_YELLOW,           TX_RED,            40, 110);
-        DrawCar( 900 - 2*t, 750, 1,   1,   1,   RGB (185, 255, 255), RGB (  0, 0, 213), 20,  90);
+        DrawCar( 120 + 2*t, 650, 1.2,           0.5 + (t/10)%2, 1.3,
+                TX_PINK,             TX_ORANGE,         -5,  60);
+
+        DrawCar( 520 + 2*t, 670, 1 + (t/6)%2,   1,              1,
+                RGB (255,   0,   0), RGB (255 ,255, 0), -5,  60);
+
+        DrawCar(1300 - 2*t, 760, 1,             1.5 + (t/10)%2, 1.5,
+                TX_YELLOW,           TX_RED,            40, 110);
+
+        DrawCar( 900 - 2*t, 750, 1 + (t/7)%2,   1,              1,
+                RGB (185, 255, 255), RGB (  0, 0, 213), 20,  90);
 
         DrawElka( 780, 180, 0, 0);
         DrawElka( 320, 200, 0, 0);
@@ -204,23 +211,23 @@ void DrawRain()
         DrawSky(RGB (0, 107, 159));
         DrawGround(RGB (0, 255, 0));
         DrawRoad();
-        DrawPesochnicaGribok( 525, 120);
-        DrawPesochnicaGribok(1085, 120);
+        DrawPesochnicaGribok( 525, 120, 0.5 + (t/3)*0.005);
+        DrawPesochnicaGribok(1085, 120, 0.5 + (t/3)*0.005);
         DrawHouse( 120, 180, 1, 1.5, RGB ( 129, 81,  54), RGB ( 63,  72, 204), RGB (216, 220,  44), TX_ORANGE, 50);
         DrawHouse(1370, 180, 2, 1,   RGB (237,  92, 204), RGB (216, 220,  44), RGB ( 47, 225,  32), TX_ORANGE, 50);
 
         DrawSun(850, 50, RGB (255, 255, 0), 36, 1, 1, (t/4)%2 + 21, -(t/4)%2 + 21);
 
-        DrawRains(  50,  50 + t, (t/4)%2); DrawRains( 125, 180 + t, (t/4)%2);
-        DrawRains( 200, 100 + t, (t/4)%2); DrawRains( 275, 100 + t, (t/4)%2);
-        DrawRains( 350, 150 + t, (t/4)%2); DrawRains( 425,  50 + t, (t/4)%2);
-        DrawRains( 500, 125 + t, (t/4)%2); DrawRains( 575, 120 + t, (t/4)%2);
-        DrawRains( 650,  75 + t, (t/4)%2); DrawRains(1100,  70 + t, (t/4)%2);
-        DrawRains( 725, 175 + t, (t/4)%2); DrawRains(1175,  25 + t, (t/4)%2);
-        DrawRains( 800,  30 + t, (t/4)%2); DrawRains(1225, 180 + t, (t/4)%2);
-        DrawRains( 875, 150 + t, (t/4)%2); DrawRains(1300, 130 + t, (t/4)%2);
-        DrawRains( 950,  75 + t, (t/4)%2); DrawRains(1375,  50 + t, (t/4)%2);
-        DrawRains(1025,  25 + t, (t/4)%2); DrawRains(1425, 100 + t, (t/4)%2);
+        DrawRains(  50,  50 + t/2, (t/4)%2); DrawRains( 125, 180 + t/2, (t/4)%2);
+        DrawRains( 200, 100 + t/2, (t/4)%2); DrawRains( 275, 100 + t/2, (t/4)%2);
+        DrawRains( 350, 150 + t/2, (t/4)%2); DrawRains( 425,  50 + t/2, (t/4)%2);
+        DrawRains( 500, 125 + t/2, (t/4)%2); DrawRains( 575, 120 + t/2, (t/4)%2);
+        DrawRains( 650,  75 + t/2, (t/4)%2); DrawRains(1100,  70 + t/2, (t/4)%2);
+        DrawRains( 725, 175 + t/2, (t/4)%2); DrawRains(1175,  25 + t/2, (t/4)%2);
+        DrawRains( 800,  30 + t/2, (t/4)%2); DrawRains(1225, 180 + t/2, (t/4)%2);
+        DrawRains( 875, 150 + t/2, (t/4)%2); DrawRains(1300, 130 + t/2, (t/4)%2);
+        DrawRains( 950,  75 + t/2, (t/4)%2); DrawRains(1375,  50 + t/2, (t/4)%2);
+        DrawRains(1025,  25 + t/2, (t/4)%2); DrawRains(1425, 100 + t/2, (t/4)%2);
 
         DrawCar( 520 - 4*t, 760, 1,   1.5, 1.5, TX_YELLOW,           TX_RED,            (t/4)%2 + 40, (t/4)%2 + 110);
         DrawCar( 120 - 2*t, 750, 1,   1,   1,   RGB (185, 255, 255), RGB (  0, 0, 213), (t/4)%2 + 20, (t/4)%2 +  90);
@@ -347,8 +354,8 @@ void DrawNight()
         DrawSky(RGB (0, 0, 128));
         DrawGround(RGB (0, 64, 0));
         DrawRoad();
-        DrawPesochnicaGribok( 525, 120);
-        DrawPesochnicaGribok(1085, 120);
+        DrawPesochnicaGribok( 525, 120, 1);
+        DrawPesochnicaGribok(1085, 120, 1);
 
         DrawHouse( 120, 180, 1, 1.5, RGB ( 129, 81,  54), RGB ( 63,  72, 204), RGB (216, 220,  44), TX_ORANGE, 50 - t*0.3);
         DrawHouse(1370, 180, 2, 1,   RGB (237,  92, 204), RGB (216, 220,  44), RGB ( 47, 225,  32), TX_ORANGE, 50 - t*0.3);
@@ -533,65 +540,72 @@ void DrawElka(int x, int y, int veterL, int veterR)
     txPolygon (pen,4);
     }
 
-void DrawPesochnicaGribok(int x, int y)
+void DrawPesochnicaGribok(int x, int y, double size)
     {
     txSetColor (TX_RED, 5);
 
     txSetFillColor (RGB (255, 128, 0));
-    POINT d[] = {{x - 125, y + 280}, {x - 125, y + 250}, {x + 25, y + 280}, {x + 25, y + 310}};
+    POINT d[] = {{ROUND(x - 125*size), ROUND(y + 280*size)}, {ROUND(x - 125*size), ROUND(y + 250*size)},
+                 {ROUND(x +  25*size), ROUND(y + 280*size)}, {ROUND(x +  25*size), ROUND(y + 310*size)}};
     txPolygon (d, 4);
 
     txSetFillColor (RGB (255, 128, 0));
-    POINT k[] = {{x + 25, y + 280}, {x + 105, y + 180}, {x + 105, y + 210}, {x + 25, y + 310}};
+    POINT k[] = {{ROUND(x +  25*size), ROUND(y + 280*size)}, {ROUND(x + 105*size), ROUND(y + 180*size)},
+                 {ROUND(x + 105*size), ROUND(y + 210*size)}, {ROUND(x +  25*size), ROUND(y + 310*size)}};
     txPolygon (k, 4);
 
     txSetFillColor (RGB (255, 128, 0));
-    POINT f[] = {{x - 125, y + 250}, {x - 35, y + 160}, {x - 35, y + 190}, {x - 95, y + 260}};
+    POINT f[] = {{ROUND(x - 125*size), ROUND(y + 250*size)}, {ROUND(x - 35*size), ROUND(y + 160*size)},
+                 {ROUND(x -  35*size), ROUND(y + 190*size)}, {ROUND(x - 95*size), ROUND(y + 260*size)}};
     txPolygon (f, 4);
 
     txSetFillColor (RGB (255, 128, 0));
-    POINT g[] = {{x - 35, y + 160}, {x + 105, y + 180}, {x + 85, y + 210}, {x - 35, y + 190}};
+    POINT g[] = {{ROUND(x - 35*size), ROUND(y + 160*size)}, {ROUND(x + 105*size), ROUND(y + 180*size)},
+                 {ROUND(x + 85*size), ROUND(y + 210*size)}, {ROUND(x -  35*size), ROUND(y + 190*size)}};
     txPolygon (g, 4);
 
     txSetFillColor (RGB (255, 255, 0));
-    POINT c[] = {{x - 95, y + 260}, {x - 35, y + 190}, {x + 85, y + 210}, {x + 25, y + 280}};
+    POINT c[] = {{ROUND(x - 95*size), ROUND(y + 260*size)}, {ROUND(x - 35*size), ROUND(y + 190*size)},
+                 {ROUND(x + 85*size), ROUND(y + 210*size)}, {ROUND(x + 25*size), ROUND(y + 280*size)}};
     txPolygon (c, 4);
 
     txSetFillColor (RGB (255, 0, 128));
-    POINT a[] = {{x - 115, y + 80}, {x, y}, {x + 115, y + 80}};
+    POINT a[] = {{ROUND(x - 115*size), ROUND(y + 80*size)}, {x, y},
+                 {ROUND(x + 115*size), ROUND(y + 80*size)}};
     txPolygon (a, 3);
 
     txSetFillColor (RGB (128, 64, 0));
-    POINT b[] = {{x - 15, y + 230}, {x + 15, y + 230}, {x + 15, y + 80}, {x - 15, y + 80}};
+    POINT b[] = {{ROUND(x - 15*size), ROUND(y + 230*size)}, {ROUND(x + 15*size), ROUND(y + 230*size)},
+                 {ROUND(x + 15*size), ROUND(y +  80*size)}, {ROUND(x - 15*size), ROUND(y +  80*size)}};
     txPolygon (b, 4);
 
     txSetColor (TX_WHITE);
     txSetFillColor (TX_WHITE);
-    txCircle (x, y + 30, 10);
+    txCircle (x,           y + 30*size, 10*size);
 
     txSetColor (TX_WHITE);
     txSetFillColor (TX_WHITE);
-    txCircle (x - 30, y + 40, 10);
+    txCircle (x - 30*size, y + 40*size, 10*size);
 
     txSetColor (TX_WHITE);
     txSetFillColor (TX_WHITE);
-    txCircle (x + 30, y + 40, 10);
+    txCircle (x + 30*size, y + 40*size, 10*size);
 
     txSetColor (TX_WHITE);
     txSetFillColor (TX_WHITE);
-    txCircle (x - 55, y + 60, 10);
+    txCircle (x - 55*size, y + 60*size, 10*size);
 
     txSetColor (TX_WHITE);
     txSetFillColor (TX_WHITE);
-    txCircle (x + 55, y + 60, 10);
+    txCircle (x + 55*size, y + 60*size, 10*size);
 
     txSetColor (TX_WHITE);
     txSetFillColor (TX_WHITE);
-    txCircle (x + 15, y + 55, 10);
+    txCircle (x + 15*size, y + 55*size, 10*size);
 
     txSetColor (TX_WHITE);
     txSetFillColor (TX_WHITE);
-    txCircle (x - 15, y + 55, 10);
+    txCircle (x - 15*size, y + 55*size, 10*size);
     }
 
 void DrawGirl(int x, int y, double sizeX, double sizeY, double size, COLORREF teloColor, int legs, int EyesL, int EyesR)
