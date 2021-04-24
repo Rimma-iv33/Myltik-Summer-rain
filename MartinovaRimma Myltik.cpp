@@ -1,9 +1,22 @@
+//{===========================================================================
+//! @file       MartinovaRimma_Myltik.cpp
+//!
+//! @brief      Мультфильм "Summer rain".
+//!
+//!             Пример создания мультфильма с помощью TXLib.
+//!
+//! @Date       April 2021
+//!
+//! @author     Martinova Rimma
+//          (C) Martinova Rimma, Ivanovo, 2021
+//}===========================================================================
+
 #include "TXLib.h"
 
 void DrawSky(COLORREF SkyColor);
 void DrawGround(COLORREF GroundColor);
 void DrawRoad();
-void DrawStars(int x, int y, int Mig);
+void DrawStars(int x, int y, int Miganie);
 void DrawSun(int x, int y, COLORREF sunColor, int ylibka, int EyesL, int EyesR, int crazyL, int crazyR);
 void DrawCloud(int x, int y, COLORREF CloudColor);
 void DrawHouse(int x, int y, double sizeX, double sizeY,COLORREF krishaColor,COLORREF osnovaColor,
@@ -14,7 +27,7 @@ void DrawElka(int x, int y, int veterL, int veterR);
 void DrawPesochnicaGribok(int x, int y);
 void DrawGirl(int x, int y, double sizeX, double sizeY, double size, COLORREF teloColor, int legs, int EyesL, int EyesR);
 void DrawBoy (int x, int y, int size, COLORREF maikaColor, int EyesL, int EyesR, int legs);
-void DrawRains(int x, int y, int Mig);
+void DrawRains(int x, int y, int Miganie);
 void DrawBackground();
 void DrawMorning();
 void DrawPeople();
@@ -68,10 +81,9 @@ void StartTitles()
         DrawRoad();
 
         txSetColor (RGB (128, 0, 128));
-        txSelectFont ("Gabriola", 300);
+        txSelectFont ("Arial", 200);
+
         txTextOut (-300 + t * 10, 100, "Summer");
-        txSetColor (RGB (128, 0, 128));
-        txSelectFont ("Gabriola", 300);
         txTextOut (1600 - t * 10, 250, "rain");
 
         txSleep (100);
@@ -94,10 +106,10 @@ void FinishTitles()
         DrawRoad();
 
         txSetColor (TX_WHITE);
-        txSelectFont ("Gabriola", 100);
-        txTextOut (420, 175, "Автор: Мартынова Римма");
-        txTextOut (570, 225, "г. Иваново");
-        txTextOut (550, 275, "2021 год");
+        txSelectFont ("Arial", 50);
+        txTextOut (550, 225, "Martinova Rimma");
+        txTextOut (625, 275, "Ivanovo");
+        txTextOut (645, 325, "2021");
 
         txSleep (100);
         t++;
@@ -126,7 +138,7 @@ void DrawMorning()
         DrawHouse(1370, 180, 2, 1,   RGB (237,  92, 204), RGB (216, 220,  44), RGB ( 47, 225,  32), TX_ORANGE, 1 + t*0.1);
 
         DrawCar( 120 + 2*t, 650, 1.2, 0.5, 1.3, TX_PINK,             TX_ORANGE,         -5,  60);
-        DrawCar( 520 + 2*t, 670, 1,   1,   1,   RGB (255,   0,   0), RGB (255 ,255, 0), -5,  60);
+        DrawCar( 520 + 2*t, 670, 1 + (t/6)%2,   1,   1,   RGB (255,   0,   0), RGB (255 ,255, 0), -5,  60);
         DrawCar(1300 - 2*t, 760, 1,   1.5, 1.5, TX_YELLOW,           TX_RED,            40, 110);
         DrawCar( 900 - 2*t, 750, 1,   1,   1,   RGB (185, 255, 255), RGB (  0, 0, 213), 20,  90);
 
