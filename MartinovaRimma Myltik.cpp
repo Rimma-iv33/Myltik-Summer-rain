@@ -42,15 +42,15 @@ int main()
     txSetFillColor (TX_WHITE);
     txRectangle (0, 0, 1500, 800);
 
-    StartTitles();
-    DrawBackground();
-    DrawMorning();
-    DrawPeople();
+   // StartTitles();
+    //DrawBackground();
+    //DrawMorning();
+    //DrawPeople();
     DrawRain();
-    DrawWalk();
-    DrawEvening();
-    DrawNight();
-    FinishTitles();
+    //DrawWalk();
+    //DrawEvening();
+    //DrawNight();
+    //FinishTitles();
 
     return 0;
     }
@@ -208,7 +208,7 @@ void DrawRain()
 
     while (t <= 400)
         {
-        DrawSky(RGB (0, 107, 159));
+        DrawSky(RGB (0, 255 - t/3, 255 - t/6));
         DrawGround(RGB (0, 255, 0));
         DrawRoad();
         DrawPesochnicaGribok( 525, 120, 0.5 + (t/3)*0.005);
@@ -234,9 +234,9 @@ void DrawRain()
         DrawCar( 900 + 5*t, 650, 1.2, 0.5, 1.3, TX_PINK,             TX_ORANGE,         (t/4)%2 - 20, (t/4)%2 +  60);
         DrawCar(1300 + 2*t, 670, 1,   1,   1,   RGB (255,   0,   0), RGB (255 ,255, 0), (t/4)%2 - 20, (t/4)%2 +  60);
 
-        DrawCloud( 250 + 1*t, 40, RGB (125, 125, 125));
-        DrawCloud( 750,       50, RGB (125, 125, 125));
-        DrawCloud(1250 - 1*t, 40, RGB (125, 125, 125));
+        DrawCloud( 250 + 1*t, 40, RGB (255 - t/4, 255 - t/4, 255 - t/4));
+        DrawCloud( 750,       50, RGB (255 - t/3, 255 - t/3, 255 - t/3));
+        DrawCloud(1250 - 1*t, 40, RGB (255 - t/5, 255 - t/5, 255 - t/5));
 
         DrawElka( 780, 180, ((t/4)%2) * 20, ((t/4)%2) * 20);
         DrawElka( 320, 200, ((t/4)%2) * 20, ((t/4)%2) * 20);
