@@ -68,6 +68,28 @@ void DrawCloud(int x, int y, COLORREF CloudColor)
     txEllipse (x, y, x + 200, y + 50);
     }
 
+//-------------------------------------------------------------------------------------------------------------------------------
+//! Рисует дом!
+//!
+//!@param x              x-координата центра крыши!
+//!@param y              y-координата центра крыши!
+//!@param sizeX          Размер дома по горизонтали!
+//!@param sizeY          Размер дома по вертикали!
+//!@param krishaColor    Окрашивает крышу!
+//!@param osnovaColor    Окрашивает основу дома!
+//!@param oknoColor      Окрашивает окно!
+//!@param zanaveckaColor Окрашивает занавески!
+//!@param zanavecka      Открывает и закрывает занавески!
+//!
+//!@note                 А ещё планируется труба на крыши и входная дверь!
+//!
+//!@par                  Пример использования:
+//!@code
+//!                      DrawHouse(120, 180, 1, 1.5, RGB (129,  81,  54),
+//!                              RGB ( 63,  72, 204),RGB (216, 220,  44), TX_ORANGE, 1 + t*0.09);
+//!@endcode
+//--------------------------------------------------------------------------------------------------------------------------------
+
 void DrawHouse(int x, int y, double sizeX, double sizeY,COLORREF krishaColor,COLORREF osnovaColor,
                COLORREF oknoColor, COLORREF zanaveckaColor, double zanavecka)
     {
