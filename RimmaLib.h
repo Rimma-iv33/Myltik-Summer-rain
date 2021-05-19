@@ -1,3 +1,25 @@
+//{===========================================================================
+//! @mainpage
+//!
+//! @brief     Library geroev myltika "Summer rain".
+//!
+//! @par function
+//!     - @ref DrawHouse ()
+//!     - @ref DrawCar ()
+//!     - @ref DrawSun ()
+//!     - @ref DrawStars ()
+//!     - @ref DrawCloud ()
+//!     - @ref DrawElka ()
+//!     - @ref DrawPesochnicaGribok ()
+//!     - @ref DrawGirl ()
+//!     - @ref DrawBoy ()
+//!     - @ref DrawRains ()
+//!
+//! @author     Martinova Rimma, Ivanovo,
+//!
+//! @date       2021
+//}===========================================================================
+
 #include "TXLib.h"
 
 void DrawStars(int x, int y, int Miganie);
@@ -13,12 +35,42 @@ void DrawGirl(int x, int y, double sizeX, double sizeY, double size, COLORREF te
 void DrawBoy (int x, int y, int size, COLORREF maikaColor, int EyesL, int EyesR, int legs);
 void DrawRains(int x, int y, int Miganie);
 
+//-------------------------------------------------------------------------------------------------------------------------------
+//! Рисует звёзды!
+//!
+//!@param x              x-координата центра окружности!
+//!@param y              y-координата центра окружности!
+//!@param Miganie        Радиус окружности!
+//!
+//!@note                 ... падали две звезды...!
+//!
+//!@par                  Пример использования:
+//!@code
+//!                      DrawStars(50, 50, (t/4)%2);
+//!@endcode
+//--------------------------------------------------------------------------------------------------------------------------------
+
 void DrawStars(int x, int y, int Miganie)
     {
     txSetColor (RGB (255, 255, 0), 1);
     txSetFillColor (RGB (255, 255, 0));
     txCircle (x, y, 3 - Miganie);
     }
+
+//-------------------------------------------------------------------------------------------------------------------------------
+//! Рисует дождь!
+//!
+//!@param x              x-координата центра окружности!
+//!@param y              y-координата центра окружности!
+//!@param Miganie        Радиус окружности!
+//!
+//!@note                 ... кап, кап, кап ...!
+//!
+//!@par                  Пример использования:
+//!@code
+//!                      DrawRains(350, 150 + t/2, (t/4)%2);
+//!@endcode
+//--------------------------------------------------------------------------------------------------------------------------------
 
 void DrawRains(int x, int y, int Miganie)
     {
@@ -27,6 +79,24 @@ void DrawRains(int x, int y, int Miganie)
     txCircle (x, y, 3 - Miganie);
     }
 
+//-------------------------------------------------------------------------------------------------------------------------------
+//! Рисует солнце!
+//!
+//!@param x              x-координата центра окружности!
+//!@param y              y-координата центра окружности!
+//!@param sunColor       Окрашивает солнце!
+//!@param ylibka         Позволяет солнцу улыбаться!
+//!@param EyesL          Позволяет солнцу маргать левым глазом!
+//!@param EyesR          Позволяет солнцу маргать правым глазом!
+//!@param crazyL, crazyR Позволяет менять расположение глаз!
+//!
+//!@note                 А ещё планируется, что будут двигаться лучики!
+//!
+//!@par                  Пример использования:
+//!@code
+//!                      DrawSun(850, 50, RGB (255, 255, 0), 36, 1, 1, (t/4)%2 + 21, -(t/4)%2 + 21);
+//!@endcode
+//--------------------------------------------------------------------------------------------------------------------------------
 
 void DrawSun(int x, int y, COLORREF sunColor, int ylibka, int EyesL, int EyesR, int crazyL, int crazyR)
     {
@@ -60,6 +130,19 @@ void DrawSun(int x, int y, COLORREF sunColor, int ylibka, int EyesL, int EyesR, 
     txLine (x     , y + 50, x     , y + 70);
     txLine (x - 25, y + 40, x - 40, y + 60);
     }
+
+//-------------------------------------------------------------------------------------------------------------------------------
+//! Рисует облако!
+//!
+//!@param x              x-левая координата эллипса!
+//!@param y              y-левая координата эллипса!
+//!@param CloudColor     Окрашивает облако!
+//!
+//!@par                  Пример использования:
+//!@code
+//!                      DrawCloud( 250 + 1*t, 40, RGB (255 - t/4, 255 - t/4, 255 - t/4));
+//!@endcode
+//--------------------------------------------------------------------------------------------------------------------------------
 
 void DrawCloud(int x, int y, COLORREF CloudColor)
     {
@@ -121,6 +204,27 @@ void DrawHouse(int x, int y, double sizeX, double sizeY,COLORREF krishaColor,COL
     txPolygon (zanaveckaR, 4);
     }
 
+//-------------------------------------------------------------------------------------------------------------------------------
+//! Рисует машину!
+//!
+//!@param x              x-координата левой, верхней точки крыши!
+//!@param y              y-координата левой, верхней точки крыши!
+//!@param sizeX          Размер машины по горизонтали!
+//!@param sizeY          Размер машины по вертикали!
+//!@param size           Размер машины!
+//!@param nizColor       Окрашивает низ машины!
+//!@param verxColor      Окрашивает верх машины!
+//!@param kolecoL        Позволяет менять расположение левого колеса!
+//!@param kolecoR        Позволяет менять расположение правого колеса!
+//!
+//!@note                 А скоро будет выхлопная труба!
+//!
+//!@par                  Пример использования:
+//!@code
+//!                      DrawCar( 520 - 4*t, 760, 1, 1.5, 1.5, TX_YELLOW, TX_RED, (t/4)%2 + 40, (t/4)%2 + 110);
+//!@endcode
+//--------------------------------------------------------------------------------------------------------------------------------
+
 void DrawCar(int x, int y, double sizeX, double sizeY, double size, COLORREF nizColor,
              COLORREF verxColor, int kolecoL, int kolecoR)
     {
@@ -143,6 +247,22 @@ void DrawCar(int x, int y, double sizeX, double sizeY, double size, COLORREF niz
     txCircle (x + kolecoR*sizeX, y + 5*sizeY, 15*size);
     }
 
+//-------------------------------------------------------------------------------------------------------------------------------
+//! Рисует елку!
+//!
+//!@param x              x-координата макушки!
+//!@param y              y-координата макушки!
+//!@param veterL         смещение влево!
+//!@param veterR         смещение вправо!
+//!
+//!@note                 Может цвет поменять?!
+//!
+//!@par                  Пример использования:
+//!@code
+//!                      DrawElka( 780, 180, ((t/4)%2) * 20, ((t/4)%2) * 20);
+//!@endcode
+//--------------------------------------------------------------------------------------------------------------------------------
+
 void DrawElka(int x, int y, int veterL, int veterR)
     {
     txSetColor (TX_GREEN, 5);
@@ -158,6 +278,8 @@ void DrawElka(int x, int y, int veterL, int veterR)
     POINT pen[] = {{x - 30, y + 130}, {x - 30, y + 160}, {x + 30, y + 160}, {x + 30, y + 130}};
     txPolygon (pen,4);
     }
+
+
 
 void DrawPesochnicaGribok(int x, int y, double size)
     {
@@ -227,6 +349,8 @@ void DrawPesochnicaGribok(int x, int y, double size)
     txCircle (x - 15*size, y + 55*size, 10*size);
     }
 
+
+
 void DrawGirl(int x, int y, double sizeX, double sizeY, double size, COLORREF teloColor, int legs, int EyesL, int EyesR)
     {
     txSetColor (RGB (255, 0, 128), 1);
@@ -265,6 +389,8 @@ void DrawGirl(int x, int y, double sizeX, double sizeY, double size, COLORREF te
     txLine (x*sizeX, y*sizeY, x - 40*sizeX, y + 10*sizeY);
     txLine (x*sizeX, y*sizeY, x + 40*sizeX, y + 10*sizeY);
     }
+
+
 
 void DrawBoy(int x, int y, int size, COLORREF maikaColor, int EyesL, int EyesR, int legs)
     {
